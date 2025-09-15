@@ -1,0 +1,98 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  
+}
+
+body {
+  font-family: 'Rethink Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: bisque;
+  color:sienna
+
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.choice-btn {
+  display: flex;
+  flex-direction: column; /* Stack emoji on top of text */
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  width: 100px;
+  height: 120px;
+}
+
+.choice-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+}
+
+.emoji {
+  font-size: 3rem; /* make emoji large */
+}
+
+.label {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.stats-btn {
+  margin: 9px; 
+  background-color: burlywood;
+  color: white;  /* ✅ This sets the text (and emoji label) color to white */
+
+}
