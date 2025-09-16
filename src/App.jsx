@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import './App.css'
+import Stats from './Stats';
 
 function App() {
+  const navigate = useNavigate();
   const choices = [
     { name: 'Rock', emoji: '🪨' },
     { name: 'Paper', emoji: '📑' },
@@ -43,31 +46,41 @@ function App() {
 
     setResult(res);
   };
+
+  const clearScore = () => {
+    setScore({ wins: 0, losses: 0, draws: 0 });
+    localStorage.removeItem('rpsScore');
+  }
   return (
-    <>
-      <h1>Rock-Paper-Scissors</h1>
-      <h2>Choose an option to play</h2>
-      <div className="choices">
-        {choices.map((choice) => (
-          <button key={choice.name} onClick={() => playGame(choice.name)} className='choice-btn'>
-            <span className="emoji">{choice.emoji}</span>
-            <span className="label">{choice.name}</span>
-          </button>
-        ))}
-      </div>
+    <Routes>
+      <Route path='/' element={
+        <div>
+          <h1>Rock-Paper-Scissors</h1>
+          <h2>Choose an option to play</h2>
+          <div className="choices">
+            {choices.map((choice) => (
+              <button key={choice.name} onClick={() => playGame(choice.name)} className='choice-btn'>
+                <span className="emoji">{choice.emoji}</span>
+                <span className="label">{choice.name}</span>
+              </button>
+            ))}
+          </div>
 
-      <div>
-        {userChoice && (
-          <div className="result">
-              <p>You chose: {userChoice}</p>
-              <p>Computer chose: {computerChoice}</p>
-              <p>{result}</p>
-              <p>Score — Wins: {score.wins} | Losses: {score.losses} | Draws: {score.draws}</p>
-            </div>
+          <div>
+            {userChoice && (
+              <div className="result">
+                  <p>You chose: {userChoice}</p>
+                  <p>Computer chose: {computerChoice}</p>
+                  <p>{result}</p>
+              </div>
 
-            )}
-      </div>
-    </>
+                )}
+          </div>
+          <button onClick={() => navigate('/stats')} className='stats-btn'>View Stats 📊</button>
+        </div>
+      } />
+      <Route path="/stats" element={<Stats score={score} clearScore={clearScore}/>} />
+    </Routes>
   )
 }
 
